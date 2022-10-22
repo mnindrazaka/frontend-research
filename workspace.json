@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "01-data-fetching": "apps/01-data-fetching",
+    "01-data-fetching-e2e": "apps/01-data-fetching-e2e"
+  }
+}
