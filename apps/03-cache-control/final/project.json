@@ -1,0 +1,54 @@
+{
+  "root": "apps/03-cache-control/final",
+  "sourceRoot": "apps/03-cache-control/final",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/03-cache-control/final",
+        "outputPath": "dist/apps/03-cache-control/final"
+      },
+      "configurations": {
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/next:server",
+      "options": {
+        "buildTarget": "03-cache-control-final:build",
+        "dev": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "03-cache-control-final:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nrwl/next:export",
+      "options": {
+        "buildTarget": "03-cache-control-final:build:production"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/03-cache-control/final"],
+      "options": {
+        "jestConfig": "apps/03-cache-control/final/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/03-cache-control/final/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}
