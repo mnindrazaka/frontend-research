@@ -30,6 +30,16 @@ export type ProductListScreenProps = {
 
 const LIMIT = 10;
 
+export async function getProductListScreenInitialProps(
+  page: number
+): Promise<ProductListScreenProps> {
+  const skip = LIMIT * (page - 1);
+  const productsResponse: ProductsApiResponse = await fetch(
+    `https://dummyjson.com/products?skip=${skip}&limit=${LIMIT}`
+  ).then((res) => res.json());
+  return { page, productsResponse };
+}
+
 export function ProductListScreen(props: ProductListScreenProps) {
   const [productsResponse, setProductsResponse] =
     React.useState<ProductsApiResponse | null>(props.productsResponse);
