@@ -3,6 +3,7 @@
   "projects": {
     "01-data-fetching-exercise": "apps/01-data-fetching/exercise",
     "01-data-fetching-final": "apps/01-data-fetching/final",
+    "02-data-fetching-ssg-final": "apps/02-data-fetching-ssg/final",
     "fetchers": "libs/fetchers",
     "screens": "libs/screens"
   }
