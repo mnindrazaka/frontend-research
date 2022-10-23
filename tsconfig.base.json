@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "strict": true,
     "paths": {
+      "@frontend-research/fetchers": ["libs/fetchers/src/index.ts"],
       "@frontend-research/screens": ["libs/screens/src/index.ts"]
     }
   },

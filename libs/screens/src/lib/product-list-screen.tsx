@@ -1,27 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/react';
 import Link from 'next/link';
-
-type Product = {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  brand: string;
-  category: string;
-  thumbnail: string;
-  images: string[];
-};
-
-type ProductsApiResponse = {
-  products: Product[];
-  total: number;
-  skip: number;
-  limit: number;
-};
+import { getProducts, ProductsApiResponse } from '@frontend-research/fetchers';
 
 export type ProductListScreenProps = {
   productsResponse: ProductsApiResponse | null;
@@ -34,9 +14,10 @@ export async function getProductListScreenInitialProps(
   page: number
 ): Promise<ProductListScreenProps> {
   const skip = LIMIT * (page - 1);
-  const productsResponse: ProductsApiResponse = await fetch(
-    `https://dummyjson.com/products?skip=${skip}&limit=${LIMIT}`
-  ).then((res) => res.json());
+  const productsResponse: ProductsApiResponse = await getProducts({
+    skip,
+    limit: LIMIT,
+  });
   return { page, productsResponse };
 }
 
@@ -48,10 +29,8 @@ export function ProductListScreen(props: ProductListScreenProps) {
   const skip = LIMIT * (props.page - 1);
 
   React.useEffect(() => {
-    fetch(`https://dummyjson.com/products?skip=${skip}&limit=${LIMIT}`)
-      .then((res) => res.json())
-      .then(setProductsResponse);
-  }, [props.productsResponse, skip]);
+    getProducts({ skip, limit: LIMIT }).then(setProductsResponse);
+  }, [skip]);
 
   return (
     <div>
