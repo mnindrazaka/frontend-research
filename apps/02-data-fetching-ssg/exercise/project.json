@@ -1,0 +1,56 @@
+{
+  "root": "apps/02-data-fetching-ssg/exercise",
+  "sourceRoot": "apps/02-data-fetching-ssg/exercise",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/02-data-fetching-ssg/exercise",
+        "outputPath": "dist/apps/02-data-fetching-ssg/exercise"
+      },
+      "configurations": {
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/next:server",
+      "options": {
+        "buildTarget": "02-data-fetching-ssg-exercise:build",
+        "dev": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "02-data-fetching-ssg-exercise:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nrwl/next:export",
+      "options": {
+        "buildTarget": "02-data-fetching-ssg-exercise:build:production"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/02-data-fetching-ssg/exercise"],
+      "options": {
+        "jestConfig": "apps/02-data-fetching-ssg/exercise/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/02-data-fetching-ssg/exercise/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
