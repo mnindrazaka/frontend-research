@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "strict": true,
-    "paths": {}
+    "paths": {
+      "@frontend-research/screens": ["libs/screens/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
-    "01-data-fetching-final": "apps/01-data-fetching/final"
+    "01-data-fetching-final": "apps/01-data-fetching/final",
+    "screens": "libs/screens"
   }
 }
