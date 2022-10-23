@@ -1,6 +1,6 @@
 {
-  "root": "apps/01-data-fetching",
-  "sourceRoot": "apps/01-data-fetching",
+  "root": "apps/01-data-fetching/final",
+  "sourceRoot": "apps/01-data-fetching/final",
   "projectType": "application",
   "targets": {
     "build": {
@@ -8,8 +8,8 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "root": "apps/01-data-fetching",
-        "outputPath": "dist/apps/01-data-fetching"
+        "root": "apps/01-data-fetching/final",
+        "outputPath": "dist/apps/01-data-fetching/final"
       },
       "configurations": {
         "production": {}
@@ -18,12 +18,12 @@
     "serve": {
       "executor": "@nrwl/next:server",
       "options": {
-        "buildTarget": "01-data-fetching:build",
+        "buildTarget": "01-data-fetching-final:build",
         "dev": true
       },
       "configurations": {
         "production": {
-          "buildTarget": "01-data-fetching:build:production",
+          "buildTarget": "01-data-fetching-final:build:production",
           "dev": false
         }
       }
@@ -31,14 +31,14 @@
     "export": {
       "executor": "@nrwl/next:export",
       "options": {
-        "buildTarget": "01-data-fetching:build:production"
+        "buildTarget": "01-data-fetching-final:build:production"
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/01-data-fetching"],
+      "outputs": ["coverage/apps/01-data-fetching/final"],
       "options": {
-        "jestConfig": "apps/01-data-fetching/jest.config.js",
+        "jestConfig": "apps/01-data-fetching/final/jest.config.js",
         "passWithNoTests": true
       }
     },
@@ -46,7 +46,7 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/01-data-fetching/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/01-data-fetching/final/**/*.{ts,tsx,js,jsx}"]
       }
     }
   },
