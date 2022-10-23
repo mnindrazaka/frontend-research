@@ -5,6 +5,7 @@
     "01-data-fetching-final": "apps/01-data-fetching/final",
     "02-data-fetching-ssg-exercise": "apps/02-data-fetching-ssg/exercise",
     "02-data-fetching-ssg-final": "apps/02-data-fetching-ssg/final",
+    "03-cache-control-exercise": "apps/03-cache-control/exercise",
     "03-cache-control-final": "apps/03-cache-control/final",
     "fetchers": "libs/fetchers",
     "screens": "libs/screens"
