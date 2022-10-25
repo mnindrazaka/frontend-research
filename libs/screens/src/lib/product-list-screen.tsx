@@ -24,13 +24,21 @@ export async function getProductListScreenInitialProps(
 export function ProductListScreen(props: ProductListScreenProps) {
   const [productsResponse, setProductsResponse] =
     React.useState<ProductsApiResponse | null>(props.productsResponse);
+  const [loading, setLoading] = React.useState(props.productsResponse === null);
+  const [error, setError] = React.useState<string | null>(null);
 
   const totalPage = Math.ceil((productsResponse?.total ?? 0) / LIMIT);
   const skip = LIMIT * (props.page - 1);
 
   React.useEffect(() => {
-    getProducts({ skip, limit: LIMIT }).then(setProductsResponse);
-  }, [skip]);
+    if (productsResponse === null) {
+      setLoading(true);
+      getProducts({ skip, limit: LIMIT })
+        .then(setProductsResponse)
+        .catch((err) => setError(err.message))
+        .finally(() => setLoading(false));
+    }
+  }, [productsResponse, skip]);
 
   return (
     <div>
@@ -41,25 +49,36 @@ export function ProductListScreen(props: ProductListScreenProps) {
       >
         Welcome
       </h1>
-      <ol start={skip + 1}>
-        {productsResponse?.products.map(({ id, title }) => (
-          <li
-            key={id}
-            css={css`
-              font-weight: bold;
-            `}
-          >
-            {title}
-          </li>
-        ))}
-      </ol>
-      <div>
-        {Array.from(Array(totalPage)).map((_, index) => (
-          <Link key={index} href={`/products/${index + 1}`}>
-            <a>{index + 1}</a>
-          </Link>
-        ))}
-      </div>
+      {loading ? (
+        <p>loading...</p>
+      ) : error ? (
+        <p>{error}</p>
+      ) : productsResponse === null ||
+        productsResponse.products.length === 0 ? (
+        <p>empty data</p>
+      ) : (
+        <>
+          <ol start={skip + 1}>
+            {productsResponse?.products.map(({ id, title }) => (
+              <li
+                key={id}
+                css={css`
+                  font-weight: bold;
+                `}
+              >
+                {title}
+              </li>
+            ))}
+          </ol>
+          <div>
+            {Array.from(Array(totalPage)).map((_, index) => (
+              <Link key={index} href={`/products/${index + 1}`}>
+                <a>{index + 1}</a>
+              </Link>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }
