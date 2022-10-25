@@ -27,5 +27,9 @@ export type GetProductsParams = {
 export function getProducts({ skip, limit }: GetProductsParams) {
   return fetch(`https://dummyjson.com/products?skip=${skip}&limit=${limit}`)
     .then((res) => res.json())
-    .then((res: ProductsApiResponse) => res);
+    .then((res: ProductsApiResponse) => ({
+      ...res,
+      // NOTE: API Error, res.skip return string instead of number
+      skip: parseInt(res.skip as unknown as string),
+    }));
 }
