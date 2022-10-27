@@ -9,6 +9,7 @@
     "03-cache-control-final": "apps/03-cache-control/final",
     "04-performance-exercise": "apps/04-performance/exercise",
     "04-performance-final": "apps/04-performance/final",
+    "components": "libs/components",
     "fetchers": "libs/fetchers",
     "screens": "libs/screens"
   }
