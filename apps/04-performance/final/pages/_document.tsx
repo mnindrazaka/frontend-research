@@ -56,11 +56,11 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="preconnect" href="https://www.google-analytics.com" />
-          <link rel="preconnect" href="https://googleads.g.doubleclick.net" />
           <link
-            rel="preconnect"
-            href="https://skillacademy-prod-image.skillacademy.com"
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Rubik:500|Source+Sans+Pro:400,600,700,900|Montserrat:400,600,700,900&display=swap"
+            type="text/css"
+            crossOrigin="true"
           />
         </Head>
         <body>

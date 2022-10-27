@@ -8,10 +8,9 @@ import {
   Grid,
   GridItem,
   Heading,
-  Image,
   Text,
 } from '@chakra-ui/react';
-import { ImageClient } from 'libs/components/src';
+import { ImageClient } from '@frontend-research/components';
 
 export type ProductListScreenProps = {
   productsResponse: ProductsApiResponse | null;
@@ -70,7 +69,7 @@ export function ProductListScreen(props: ProductListScreenProps) {
         />
         <Box marginBottom="5">
           <Heading>Products</Heading>
-          <Text>We sell our quality products</Text>
+          <Text fontFamily="Montserrat">We sell our quality products</Text>
         </Box>
 
         {loading ? (
