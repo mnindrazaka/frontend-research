@@ -19,6 +19,16 @@
         "production": {}
       }
     },
+    "build:analyzer": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "ANALYZE=true nx build 04-performance-final"
+          }
+        ]
+      }
+    },
     "serve": {
       "executor": "@nrwl/next:server",
       "defaultConfiguration": "development",
