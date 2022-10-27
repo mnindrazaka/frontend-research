@@ -7,6 +7,8 @@
     "02-data-fetching-ssg-final": "apps/02-data-fetching-ssg/final",
     "03-cache-control-exercise": "apps/03-cache-control/exercise",
     "03-cache-control-final": "apps/03-cache-control/final",
+    "04-performance-exercise": "apps/04-performance/exercise",
+    "04-performance-final": "apps/04-performance/final",
     "fetchers": "libs/fetchers",
     "screens": "libs/screens"
   }
